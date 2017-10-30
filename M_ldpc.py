@@ -19,15 +19,17 @@ def poly_array(coef):
         else:
             y = y + coef[i]*x**i;
 
-    return y
+    return y, x
 
 teste1 = (np.sum(lamb)==1 and np.sum(ro) == 1)
 
 #testar se os polinomios concordam com a taxa do código
-r = 1 - integrate(poly_array(ro),(x,0,1))/integrate(poly_array(lamb),(x,0,1))
+pro, xro = poly_array(ro)
+plamb, xlamb = poly_array(lamb)
+r = 1 - integrate(pro,(xro,0,1))/integrate(plamb,(xlamb,0,1))
 #admite apenas as 5 primeiras casas decimais das variáveis. caso não seja feito, 
 #sempre dará falso
-teste2 = round(r,5) == round(k/n,5) 
+teste2 = round(r,5) == round(k/n,5) #round arredonda
 
 if (teste1 and teste2): #caso os teste 1 e 2 falhem, o programa não pode ser executado
     
@@ -75,3 +77,4 @@ if (teste1 and teste2): #caso os teste 1 e 2 falhem, o programa não pode ser ex
         vpar = np.append(vpar, (i+1)*np.ones((1,ngpar[i]), dtype = int))
     if len(vpar)!=k:
         erro = 2 #indica erro caso o numero de nós de paridade seja diferente de k
+
