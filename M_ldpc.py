@@ -1,10 +1,10 @@
 import numpy as np
-import random as rd
+from random import shuffle
 from sympy import symbols
 from sympy import integrate
 
-n = 26
-k = 12
+n = 23
+k = 10
 lamb = np.array([0.3, 0.7])  
 ro = np.array([0, 0.4, 0, 0.6])
 
@@ -78,3 +78,26 @@ if (teste1 and teste2): #caso os teste 1 e 2 falhem, o programa não pode ser ex
     if len(vpar)!=k:
         erro = 2 #indica erro caso o numero de nós de paridade seja diferente de k
 
+    #shuffle(vvar)
+    #shuffle(vpar)
+    var = np.asarray(range(n))
+    #shuffle(var)
+    par = np.asarray(range(k))
+    #shuffle(par)
+    m = 0 #auxilia na sequencia dos nós de paridade
+    aux = 0
+    for i in var: #varre as colunas de H
+        for j in range(vvar[i]):
+            h[m+j][i] = 1
+            if np.sum(h,1)[m+j] == vpar[m+j]:
+                aux = aux + 1
+        m = m + aux
+        aux = 0
+        print(aux)
+        print(h)
+        print(m)
+        
+
+
+
+        
