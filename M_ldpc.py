@@ -3,10 +3,10 @@ from random import shuffle
 from sympy import symbols
 from sympy import integrate
 
-n = 23
+n = 20
 k = 10
-lamb = np.array([0.3, 0.7])  
-ro = np.array([0, 0.4, 0, 0.6])
+lamb = np.array([0.5, 0.5])  
+ro = np.array([0, 0.5, 0, 0.5])
 
 #Função que cria os polinômios usando matemática simbólica (sympy)
 #para poder integrar os polinômios e testar se definem uma taxa igual a k/n
